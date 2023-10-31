@@ -27,12 +27,7 @@ async function runCommand(user, position) {
 
 (async () => {
     try {
-        const { stderr: wgetError } = await promisifiedExec(wgetcommand);
-
-        if (wgetError) {
-            console.error("Erro ao executar wgetcommand:", wgetError);
-            return;
-        }
+        await promisifiedExec(wgetcommand); // Aguarde a conclusão do comando wgetcommand
 
         const data = fs.readFileSync('/root/users.json', { encoding: "utf-8" });
         const users = JSON.parse(data);
@@ -45,3 +40,4 @@ async function runCommand(user, position) {
         console.log(`Falha ao restaurar backup: ` + err);
     }
 })();
+
