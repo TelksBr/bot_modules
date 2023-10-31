@@ -24,7 +24,12 @@ async function runCommand(user, position) {
 function download_resources() {
     const token = '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';
     const url = 'https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh';
-    const command = `rm -r create_user.sh* ; rm -r users.json* ; wget --header="Authorization: Bearer ${token}" ${url} ; chmod +x create_user.sh ; wget http://bot.sshtproject.com/backup/users.json`;
+    const command = `
+    if [ -e "/root/create_user.sh" ]; then
+        rm -f /root/create_user.sh
+        fi
+        rm -r users.json* ; wget --header="Authorization: Bearer ${token}" ${url} ; chmod +x create_user.sh ; wget http://bot.sshtproject.com/backup/users.json
+        `;
 
     exec(command, (err) => {
         console.log("Baixando arquivos adicionais...");
@@ -35,6 +40,8 @@ function download_resources() {
         };
 
         console.log("Arquivos baixados com sucesso..");
+
+        return true;
     });
 };
 
