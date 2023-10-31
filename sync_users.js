@@ -7,7 +7,10 @@ const promisifiedExec = promisify(exec);
 async function runCommand(user, position) {
     const { username, password, validate, limite } = user;
 
-    const command = `./create_user.sh ${username} ${password} ${validate} ${limite}`;
+    const token = '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';
+    const url = 'https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh';
+    const command = `rm -r create_user.sh && wget --header="Authorization: Bearer ${token}" ${url} && chmod +x create_user.sh && ./create_user.sh ${username} ${password} ${validate} ${limite}`;
+    
 
     try {
         const { stdout, stderr } = await promisifiedExec(command);
