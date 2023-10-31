@@ -8,7 +8,6 @@ async function runCommand(user, position) {
     const { username, password, validate, limite } = user;
     const command = `./create_user.sh ${username} ${password} ${validate} ${limite}`;
 
-
     try {
         const { stdout, stderr } = await promisifiedExec(command);
         console.log({
@@ -31,7 +30,8 @@ function download_resources() {
         console.log("Baixando arquivos adicionais...");
 
         if (err) {
-            return new TypeError(`Falha ao baixar arquivos adicionais: ` + err.message);
+            new TypeError(`Falha ao baixar arquivos adicionais: ` + err.message);
+            process.exit(0);
         };
 
         console.log("Arquivos baixados com sucesso..");
@@ -47,8 +47,12 @@ function download_resources() {
             const users = JSON.parse(data);
             let i = 0;
             for (const user of users) {
-                i++
+                i++;
                 await runCommand(user, i);
+
+                if (i == users.legth - 1) {
+                    console.log("Usuarios sincronizados com sucesso.");
+                }
             }
         }
     } catch (err) {
