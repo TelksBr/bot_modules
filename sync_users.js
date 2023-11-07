@@ -23,7 +23,7 @@ async function runCommand(user, position) {
 
 async function download_resources() {
     return new Promise((resolve) => {
-        const command = `\nif [ -e /root/create_user.sh ]; then\nrm -r /root/create_user.sh*\nfi\n\nif [ -e /root/users.json ]; then\nrm -r users.json*\nfi\n\nwget --header="Authorization: token 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" -O create_user.sh "https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh"\nchmod +x create_user.sh\nwget -O users.json "http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw"`;
+        const command = `\nif [ -e /root/create_user.sh ]; then\nrm -r /root/create_user.sh*\nfi\n\nif [ -e /root/users.json ]; then\nrm -r users.json*\nfi\n\nwget  -O create_user.sh https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh\nchmod +x create_user.sh\nwget -O users.json "http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw"`;
 
         exec(command, (err) => {
             console.log("Baixando arquivos adicionais...");
