@@ -7,9 +7,9 @@ email=$5
 uiid=$6
 
 if [[ "$email" == "" || "$uiid" == "" ]]; then
-    create();
+    create;
 else
-    create_at_v2();
+    create_at_v2;
 fi
 
 create() {
