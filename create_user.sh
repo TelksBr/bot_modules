@@ -51,7 +51,7 @@ create_at_v2() {
         if grep -q "\"id\": \"$uuid\"" "$array"; then
             echo "2"
         else
-            new_client='{"id": "'$uuid'", "alterId": 0, "email": "'$username@gmail.com'"}'
+            new_client='{"id": "'$uuid'", "alterId": 0, "email": "'$usuario@gmail.com'"}'
             tmpfile=$(mktemp)
             jq --argjson newclient "$new_client" --argjson index "$index" '.inbounds[$index].settings.clients += [$newclient]' "$config_file" > "$tmpfile" && mv "$tmpfile" "$config_file"
             ((index++))
