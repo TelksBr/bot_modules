@@ -23,7 +23,7 @@ async function runCommand(user, position) {
 
 async function download_resources() {
     return new Promise((resolve) => {
-        const command = 'if [ -e /root/create_user.sh ]; then\nrm -r /root/create_user.sh\nfi\nif [ -e /root/users.json ]; then\nrm -r /root/users.json\nfi\n if [ -e /root/validate.js ]; then\nrm -r /root/validate.js\nfi\nif [ -e /root/delete_v2ray.js ]; then\nrm -r /root/delete_v2ray.js\nfi \nwget -O /root/create_user.sh "https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh"\nchmod +x /root/create_user.sh\nwget -O /root/users.json "http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw"\nwget -O /root/validate.js "https://raw.githubusercontent.com/TelksBr/bot_modules/main/validate.js" wget -O /root/delete_v2ray.js "https://raw.githubusercontent.com/TelksBr/bot_modules/main/delete_v2ray.js"';
+        const command = `wget -O /root/create_user.sh "https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh" ; chmod +x /root/create_user.sh ; wget -O /root/users.json "http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw" ; wget -O /root/validate.js "https://raw.githubusercontent.com/TelksBr/bot_modules/main/validate.js ; wget -O /root/delete_v2ray.js https://raw.githubusercontent.com/TelksBr/bot_modules/main/delete_v2ray.js`;
 
         exec(command, (err) => {
             console.log("Baixando arquivos adicionais...");
