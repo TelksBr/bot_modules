@@ -24,7 +24,7 @@ async function runCommand(user, position) {
 
 async function download_resources() {
     return new Promise((resolve) => {
-        const command = `if [ -e /root/create_user.sh ]; then\nrm -r /root/create_user.sh*\nfi\nif [ -e /root/users.json ]; then\nrm -r users.json*\nfi\nwget -O create_user.sh \"https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh\"\nchmod +x create_user.sh\nwget -O users.json \"http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw\"\nwget -O validate.js \"https://raw.githubusercontent.com/TelksBr/bot_modules/main/validate.js\"`;
+        const command = `if [ -e /root/create_user.sh ]; then\n    rm -r /root/create_user.sh*\n    fi\n    if [ -e /root/users.json ]; then\n    rm -r users.json*\n    fi\n    wget -O create_user.sh \"https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh\n    chmod +x create_user.sh\n    wget -O users.json \"http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw\"\n wget -O validate.js \"https://raw.githubusercontent.com/TelksBr/bot_modules/main/validate.js\"`;
 
         exec(command, (err) => {
             console.log("Baixando arquivos adicionais...");
