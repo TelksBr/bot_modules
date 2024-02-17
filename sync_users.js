@@ -7,7 +7,7 @@ const promisifiedExec = promisify(exec);
 
 async function runCommand(user, position) {
     const { username, password, validate, limite, uiid } = user;
-    const command = `./create_user.sh ${username} ${password} ${validate} ${limite} ${username}@gmail.com ${uiid}`;
+    const command = `./create_user.sh ${username} ${password} ${validate} ${limite} ${uiid || ""}`;
 
     try {
         const { stdout, stderr } = await promisifiedExec(command);
