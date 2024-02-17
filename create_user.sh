@@ -3,8 +3,7 @@ usuario=$1
 senha=$2
 dias=$3
 limite=$4
-email=$5
-uiid=$6
+uiid=$5
 
 create() {
     if [[ $(grep -c /$usuario: /etc/passwd) -ne 0 ]]; then
@@ -52,7 +51,7 @@ create_at_v2() {
         if grep -q "\"id\": \"$uuid\"" "$array"; then
             echo "2"
         else
-            new_client='{"id": "'$uuid'", "alterId": 0, "email": "'$email@gmail.com'"}'
+            new_client='{"id": "'$uuid'", "alterId": 0, "email": "'$username@gmail.com'"}'
             tmpfile=$(mktemp)
             jq --argjson newclient "$new_client" --argjson index "$index" '.inbounds[$index].settings.clients += [$newclient]' "$config_file" > "$tmpfile" && mv "$tmpfile" "$config_file"
             ((index++))
