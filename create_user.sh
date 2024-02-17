@@ -40,7 +40,7 @@ create_at_v2() {
     config_file="/etc/v2ray/config.json"
     
     # Verificar se o novo ID já existe na configuração
-
+    
     echo "UIDD: $uuid"
     
     array=$(cat "$config_file" | jq '.inbounds')
@@ -51,12 +51,12 @@ create_at_v2() {
     for port in $ports; do
         echo "$index"
         if $(node validate.js $index $uuid) === "true"; then
-        echo "Já existe no index $index"
-        exit 1
+            echo "V2RAY JA EXISTE NO INDEX $index.";
         else
             new_client='{"id": "'$uuid'", "alterId": 0, "email": "'$usuario@gmail.com'"}'
             tmpfile=$(mktemp)
             jq --argjson newclient "$new_client" --argjson index "$index" '.inbounds[$index].settings.clients += [$newclient]' "$config_file" > "$tmpfile" && mv "$tmpfile" "$config_file"
+            echo "V2RAY CRIADO COM SUCESSO.";
             ((index++))
         fi
     done
