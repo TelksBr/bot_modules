@@ -50,8 +50,8 @@ create_at_v2() {
     
     for port in $ports; do
         echo "$index"
-        if grep -q "\"id\": \"$uuid\"" "$array"; then
-            echo "2"
+        if $(node validate.js $index $uuid) == "true"; then
+            echo "Já existe no index $index"
         else
             new_client='{"id": "'$uuid'", "alterId": 0, "email": "'$usuario@gmail.com'"}'
             tmpfile=$(mktemp)
