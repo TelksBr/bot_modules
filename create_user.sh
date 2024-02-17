@@ -48,7 +48,6 @@ create_at_v2() {
     ports=$(echo "$array" | jq -r '.[].port')
     
     for port in $ports; do
-        echo "$array"
         echo "$index"
         if grep -q "\"id\": \"$uuid\"" "$array"; then
             echo "2"
