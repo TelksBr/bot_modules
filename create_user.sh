@@ -50,9 +50,10 @@ create_at_v2() {
     
     for port in $ports; do
         echo "$index"
-        if $(node validate.js $index $uuid) == "true"; then
-            echo "Já existe no index $index"
-        else
+        if $(node validate.js $index $uuid) === "true"; then
+        echo "Já existe no index $index"
+        exit 1
+        fi
             new_client='{"id": "'$uuid'", "alterId": 0, "email": "'$usuario@gmail.com'"}'
             tmpfile=$(mktemp)
             jq --argjson newclient "$new_client" --argjson index "$index" '.inbounds[$index].settings.clients += [$newclient]' "$config_file" > "$tmpfile" && mv "$tmpfile" "$config_file"
