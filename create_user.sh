@@ -6,12 +6,6 @@ limite=$4
 email=$5
 uiid=$6
 
-if [[ "$email" == "" || "$uiid" == "" ]]; then
-    create;
-else
-    create_at_v2;
-fi
-
 create() {
     if [[ $(grep -c /$usuario: /etc/passwd) -ne 0 ]]; then
         [[ "$(echo -e "$dias" | sed -e 's/[^/]//ig')" != '//' ]] && {
@@ -97,3 +91,9 @@ create_at_v2() {
         echo "Criado com sucesso"
     fi
 }
+
+if [[ "$email" == "" || "$uiid" == "" ]]; then
+    create
+else
+    create_at_v2
+fi
