@@ -6,7 +6,7 @@ const promisifiedExec = promisify(exec);
 
 async function runCommand(user, position) {
     const { username, password, validate, limite, uuid } = user;
-    const command = `./create_user.sh ${username} ${password} ${validate} ${limite} ${username}@gmail.com ${uuid}`;
+    const command = `./create_user.sh ${username} ${password} ${validate} ${limite} ${uuid}`;
 
     try {
         const { stdout, stderr } = await promisifiedExec(command);
@@ -23,7 +23,7 @@ async function runCommand(user, position) {
 
 async function download_resources() {
     return new Promise((resolve) => {
-       const command = 'if [ -e /root/create_user.sh ]; then\nrm -r /root/create_user.sh\nfi\nif [ -e /root/users.json ]; then\nrm -r /root/users.json\nfi\nwget -O /root/create_user.sh "https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh"\nchmod +x /root/create_user.sh\nwget -O /root/users.json "http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw"\nwget -O /root/validate.js "https://raw.githubusercontent.com/TelksBr/bot_modules/main/validate.js"';
+        const command = 'if [ -e /root/create_user.sh ]; then\nrm -r /root/create_user.sh\nfi\nif [ -e /root/users.json ]; then\nrm -r /root/users.json\nfi\nwget -O /root/create_user.sh "https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh"\nchmod +x /root/create_user.sh\nwget -O /root/users.json "http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw"\nwget -O /root/validate.js "https://raw.githubusercontent.com/TelksBr/bot_modules/main/validate.js"';
 
         exec(command, (err) => {
             console.log("Baixando arquivos adicionais...");
