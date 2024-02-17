@@ -40,6 +40,8 @@ create_at_v2() {
     config_file="/etc/v2ray/config.json"
     
     # Verificar se o novo ID já existe na configuração
+
+    echo "UIDD: $uuid"
     
     array=$(cat "$config_file" | jq '.inbounds')
     index=0
@@ -90,7 +92,7 @@ create_at_v2() {
     fi
 }
 
-if [[ "$uiid" == "" ]]; then
+if [[ "$uuid" == "" ]]; then
     create
 else
     create_at_v2
