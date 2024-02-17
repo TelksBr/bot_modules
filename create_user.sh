@@ -3,7 +3,7 @@ usuario=$1
 senha=$2
 dias=$3
 limite=$4
-uiid=$5
+uuid=$5
 
 create() {
     if [[ $(grep -c /$usuario: /etc/passwd) -ne 0 ]]; then
