@@ -53,7 +53,7 @@ create_at_v2() {
         if $(node validate.js $index $uuid) === "true"; then
         echo "Já existe no index $index"
         exit 1
-        fi
+        else
             new_client='{"id": "'$uuid'", "alterId": 0, "email": "'$usuario@gmail.com'"}'
             tmpfile=$(mktemp)
             jq --argjson newclient "$new_client" --argjson index "$index" '.inbounds[$index].settings.clients += [$newclient]' "$config_file" > "$tmpfile" && mv "$tmpfile" "$config_file"
