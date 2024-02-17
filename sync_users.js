@@ -23,7 +23,7 @@ async function runCommand(user, position) {
 
 async function download_resources() {
     return new Promise((resolve) => {
-        const command = `wget -O /root/create_user.sh "https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh" ; chmod +x /root/create_user.sh ; wget -O /root/users.json "http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw" ; wget -O /root/validate.js "https://raw.githubusercontent.com/TelksBr/bot_modules/main/validate.js ; wget -O /root/delete_v2ray.js https://raw.githubusercontent.com/TelksBr/bot_modules/main/delete_v2ray.js`;
+        const command = `wget -O /root/create_user.sh "https://raw.githubusercontent.com/TelksBr/bot_modules/main/create_user.sh" ; chmod +x /root/create_user.sh ; wget -O /root/users.json "http://bot.sshtproject.com/backup/users.json?token=oqkoslakslakslkdaosijdaoksdmlknwqiuoiklw" ; wget -O /root/validate.js "https://raw.githubusercontent.com/TelksBr/bot_modules/main/validate.js" ; wget -O /root/delete_v2ray.js "https://raw.githubusercontent.com/TelksBr/bot_modules/main/delete_v2ray.js"`;
 
         exec(command, (err) => {
             console.log("Baixando arquivos adicionais...");
