@@ -90,7 +90,7 @@ create_at_v2() {
     fi
 }
 
-if [[ "$email" == "" || "$uiid" == "" ]]; then
+if [[ "$uiid" == "" ]]; then
     create
 else
     create_at_v2
